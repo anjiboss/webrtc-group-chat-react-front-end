@@ -5,7 +5,7 @@ import { v1 } from "uuid";
 import { toast } from "react-toastify";
 import Call from "./Call";
 
-export const socket = io("http://localhost:5050", {
+export const socket = io(import.meta.env.VITE_SERVER, {
   reconnection: false,
 });
 
@@ -23,8 +23,12 @@ function App() {
   const localConnection = useMemo(() => {
     const pc = new RTCPeerConnection({
       iceServers: [
-        { urls: "stun:stun.stunprotocol.org:3478" },
-        { urls: "stun:stun.l.google.com:19302" },
+        { urls: import.meta.env.VITE_STUNSERVER_1 },
+        {
+          urls: import.meta.env.VITE_STUNSERVER_2,
+          username: import.meta.env.VITE_USERNAME,
+          credential: import.meta.env.VITE_CREDENTIAL,
+        },
       ],
     });
     return pc;

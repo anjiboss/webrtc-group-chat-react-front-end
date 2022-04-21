@@ -20,8 +20,12 @@ const Call: React.FC<CallProps> = ({ user, username }) => {
     console.log("create connection");
     const pc = new RTCPeerConnection({
       iceServers: [
-        { urls: "stun:stun.stunprotocol.org:3478" },
-        { urls: "stun:stun.l.google.com:19302" },
+        { urls: import.meta.env.VITE_STUNSERVER_1 },
+        {
+          urls: import.meta.env.VITE_STUNSERVER_2,
+          username: import.meta.env.VITE_USERNAME,
+          credential: import.meta.env.VITE_CREDENTIAL,
+        },
       ],
     });
     pc.ontrack = (e) => {
