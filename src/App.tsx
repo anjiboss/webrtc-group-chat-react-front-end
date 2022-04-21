@@ -28,8 +28,8 @@ function App() {
         { urls: import.meta.env.VITE_STUNSERVER_1 },
         {
           urls: import.meta.env.VITE_STUNSERVER_2,
-          username: import.meta.env.VITE_USERNAME,
-          credential: import.meta.env.VITE_CREDENTIAL,
+          username: import.meta.env.VITE_XIRSYS_USERNAME,
+          credential: import.meta.env.VITE_XIRSYS_CREDENTIAL,
         },
       ],
     });
