@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./App.css";
 import { io } from "socket.io-client";
 import { v1 } from "uuid";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import Call from "./Call";
 
 export const socket = io(import.meta.env.VITE_SERVER, {
@@ -139,6 +139,7 @@ function App() {
 
   return (
     <div className="App">
+      <ToastContainer />
       <div>
         <h3>Username: {username}</h3>
       </div>

@@ -36,7 +36,7 @@ const Call: React.FC<CallProps> = ({ user, username }) => {
         }
       }
     };
-    // pc.addTransceiver("video", { direction: "recvonly" });
+    pc.addTransceiver("video", { direction: "recvonly" });
     return pc;
   }, [user]);
 
@@ -72,7 +72,7 @@ const Call: React.FC<CallProps> = ({ user, username }) => {
     });
 
     localConnection.onicecandidate = (event) => {
-      console.log("send offer candidate");
+      console.log("send offer candidate to ", user.username);
       if (event.candidate) {
         socket.emit("consumer-add-offer-candidate", {
           candidate: event.candidate,
