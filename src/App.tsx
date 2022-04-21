@@ -20,6 +20,8 @@ function App() {
   const [users, setUsers] = useState<User[]>([]);
   const [start, setStart] = useState(false);
 
+  console.log(import.meta.env);
+
   const localConnection = useMemo(() => {
     const pc = new RTCPeerConnection({
       iceServers: [
