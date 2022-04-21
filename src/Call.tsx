@@ -104,6 +104,9 @@ const Call: React.FC<CallProps> = ({ user, username }) => {
         "%c Connection State: " + localConnection.connectionState,
         "background: skyblue; color:black"
       );
+      toast(localConnection.connectionState, {
+        type: localConnection.connectionState === "failed" ? "error" : "info",
+      });
     };
 
     return () => {
