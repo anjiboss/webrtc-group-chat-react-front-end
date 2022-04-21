@@ -45,17 +45,19 @@ function App() {
   };
 
   const getUserVideo = async () => {
-    return navigator.mediaDevices.getDisplayMedia().then((media) => {
-      if (localRef.current) {
-        localRef.current.srcObject = media;
-      } else {
-        toast("No LocalRef", { type: "error" });
-      }
-      media.getTracks().forEach((track) => {
-        console.log("send track");
-        localConnection.addTrack(track, media);
+    return navigator.mediaDevices
+      .getUserMedia({ video: true })
+      .then((media) => {
+        if (localRef.current) {
+          localRef.current.srcObject = media;
+        } else {
+          toast("No LocalRef", { type: "error" });
+        }
+        media.getTracks().forEach((track) => {
+          console.log("send track");
+          localConnection.addTrack(track, media);
+        });
       });
-    });
   };
 
   useEffect(() => {
