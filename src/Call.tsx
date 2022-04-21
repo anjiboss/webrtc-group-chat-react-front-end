@@ -76,6 +76,8 @@ const Call: React.FC<CallProps> = ({ user, username }) => {
       if (event.candidate) {
         socket.emit("consumer-add-offer-candidate", {
           candidate: event.candidate,
+          username,
+          streamName: user.username,
         });
       }
     };

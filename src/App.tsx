@@ -20,8 +20,6 @@ function App() {
   const [users, setUsers] = useState<User[]>([]);
   const [start, setStart] = useState(false);
 
-  console.log(import.meta.env);
-
   const localConnection = useMemo(() => {
     const pc = new RTCPeerConnection({
       iceServers: [
@@ -109,6 +107,10 @@ function App() {
       };
     });
 
+    socket.on("logging", (logs) => {
+      console.log(logs);
+    });
+
     return () => {
       socket.off("answer");
     };
@@ -145,6 +147,13 @@ function App() {
           }}
         >
           Start
+        </button>
+        <button
+          onClick={() => {
+            socket.emit("log");
+          }}
+        >
+          LOG
         </button>
       </div>
       <div>
